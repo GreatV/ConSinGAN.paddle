@@ -1,6 +1,3 @@
-import sys
-sys.path.append('/home/greatx/repos/ConSinGAN.paddle/utils')
-import paddle_aux
 import paddle
 import numpy as np
 from scipy.ndimage import filters, measurements, interpolation
@@ -47,7 +44,7 @@ def torch2uint8(x):
     x = 255 * denorm(x)
     try:
         x = x.cpu().numpy()
-    except:
+    except Exception as e:
         x = x.detach().cpu().numpy()
     x = x.astype(np.uint8)
     return x
