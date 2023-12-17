@@ -33,7 +33,7 @@ if __name__ == '__main__':
         fixed_noise = list(paddle.static.InputSpec.from_tensor(t) for t in fixed_noise)
         reals_shapes = static.InputSpec.from_tensor(paddle.to_tensor(reals_shapes))
         noise_amp = static.InputSpec.from_tensor(paddle.to_tensor(noise_amp)) 
-        paddle.jit.save(model, input_spec=(fixed_noise, reals_shapes, noise_amp), path="./model")
+        paddle.jit.save(model, input_spec=(fixed_noise, reals_shapes, noise_amp), path="./model", skip_prune_program=True)
         print('[JIT] paddle.jit.save successed.')
         exit(0)
     except Exception as e:
